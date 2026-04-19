@@ -96,7 +96,7 @@ Fallos de página OPT:  7
 | 8  | P1  | P5      | P1      | P2      | Hit          | Hit         | P1 en marco 2                             |
 | 9  | P2  | P5      | P1      | P2      | Hit          | Hit         | P2 en marco 3                             |
 | 10 | P3  | P5      | P3      | P2      | Fallo        | Fallo       | FIFO expulsa P1 (ptr=2) / OPT expulsa P1 (ya no aparece más) |
-| 11 | P4  | P5      | P3      | P4      | Fallo        | Fallo         FIFO expulsa P2 (ptr=3) / OPT expulsa P2 (ya no aparece más) |
+| 11 | P4  | P5      | P3      | P4      | Fallo        | Fallo       |  FIFO expulsa P2 (ptr=3) / OPT expulsa P2 (ya no aparece más) |
 | 12 | P5  | P5      | P3      | P4      | Hit          | Hit         | P5 en marco 1                             |
 
 | Algoritmo  | Fallos de Página |
