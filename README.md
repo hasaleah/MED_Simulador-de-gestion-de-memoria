@@ -92,9 +92,24 @@ Resultado: -1
 Fallos de página FIFO: 9
 Fallos de página OPT:  7
 ```
-
+---
 
 ## Análisis de Resultados
+
+| t  | Ref | Marco 1 | Marco 2 | Marco 3 | FIFO ¿Fallo? | OPT ¿Fallo? | Nota OPT (víctima)                        |
+|----|-----|---------|---------|---------|--------------|-------------|-------------------------------------------|
+| 1  | P1  | P1      | —       | —       | Fallo        | Fallo       | Marco libre                               |
+| 2  | P2  | P1      | P2      | —       | Fallo        | Fallo       | Marco libre                               |
+| 3  | P3  | P1      | P2      | P3      | Fallo        | Fallo       | Marco libre                               |
+| 4  | P4  | P4      | P2      | P3      | Fallo        | Fallo       | FIFO expulsa P1 (ptr=1) / OPT expulsa P3 (próximo uso más lejano) |
+| 5  | P1  | P4      | P1      | P3      | Fallo        | Hit         | FIFO expulsa P2 (ptr=2) / OPT: P1 ya está |
+| 6  | P2  | P4      | P1      | P2      | Fallo        | Hit         | FIFO expulsa P3 (ptr=3) / OPT: P2 ya está |
+| 7  | P5  | P5      | P1      | P2      | Fallo        | Fallo       | FIFO expulsa P4 (ptr=1) / OPT expulsa P4 (no se usa hasta t=11) |
+| 8  | P1  | P5      | P1      | P2      | Hit          | Hit         | P1 en marco 2                             |
+| 9  | P2  | P5      | P1      | P2      | Hit          | Hit         | P2 en marco 3                             |
+| 10 | P3  | P5      | P3      | P2      | Fallo        | Fallo       | FIFO expulsa P1 (ptr=2) / OPT expulsa P1 (ya no aparece más) |
+| 11 | P4  | P5      | P3      | P4      | Fallo        | Fallo         FIFO expulsa P2 (ptr=3) / OPT expulsa P2 (ya no aparece más) |
+| 12 | P5  | P5      | P3      | P4      | Hit          | Hit         | P5 en marco 1                             |
 
 | Algoritmo  | Fallos de Página |
 |------------|-----------------|
@@ -102,7 +117,7 @@ Fallos de página OPT:  7
 | OPT        | 7               |
 | Diferencia | 2 menos con OPT |
 
-
+---
 ### ¿Por qué OPT tiene mejor rendimiento?
 
 OPT logra 2 fallos menos porque en cada reemplazo elige expulsar la página
