@@ -22,20 +22,8 @@ Simulador de una Unidad de Administración de Memoria (MMU) implementado en pseu
 
 ---
 
-## Estructura del Proyecto
 
-```
-proyecto/
-├── F1_Estructuras de Datos y Asignación.psc      → Estructuras y mapa de bits
-├── F2_MMU y traducción de direcciones.psc        → Traducción de direcciones
-├── F3_Algoritmos de reemplazo de páginaso.psc    → Algoritmos FIFO y OPT
-└── README.md
-```
-
-
----
-
-## ✿ Fase 1: Estructuras y Mapa de Bits
+## ✿ Fase 1: Estructuras y mapa de bits
 
 Se definen dos arreglos paralelos `MarcoOcupado[]` y `MarcoPagina[]` para representar la RAM física, el mapa de bits imprime `0` (libre) o `1` (ocupado)
 por cada marco tras cada operación.
@@ -53,7 +41,7 @@ Mapa de bits (M1..M4): 1 0 1 0
 ```
 
 
-## ✿ Fase 2: MMU y Traducción de Direcciones
+## ✿ Fase 2: MMU y traducción de direcciones
 
 La función `TraducirDireccion(paginaLogica, offset, ...)` consulta la tabla de páginas y calcula:
 
@@ -74,7 +62,7 @@ Resultado: -1
 ```
 
 
-## ✿ Fase 3: Algoritmos de Reemplazo
+## ✿ Fase 3: Algoritmos de reemplazo
 
 **Cadena de referencias:** `[1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5]`  
 **Marcos disponibles:** 3
@@ -94,7 +82,7 @@ Fallos de página OPT:  7
 ```
 ---
 
-## Análisis de Resultados
+## Análisis de resultados
 
 | t  | Ref | Marco 1 | Marco 2 | Marco 3 | FIFO ¿Fallo? | OPT ¿Fallo? | Nota OPT (víctima)                        |
 |----|-----|---------|---------|---------|--------------|-------------|-------------------------------------------|
